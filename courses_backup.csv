@@ -1,0 +1,26 @@
+
+programme,level,department,campus,interests,skills,subjects
+Civil Engineering,B.Tech,Engineering,Verify Campus,Construction;Infrastructure;Buildings;Structural Design,Problem Solving;Planning;Design,Engineering Mechanics;Surveying;Structural Engineering
+Computer Science and Engineering,B.Tech,Computer Science,Verify Campus,Software;Programming;Technology;Development,C Programming;Python;Problem Solving,Programming;Data Structures;DBMS;Operating Systems
+Computer Science and Information Technology,B.Tech,Computer Science,Verify Campus,Software;IT;Networking;Technology,Programming;Networking;Database Management,Programming;Computer Networks;DBMS;Operating Systems
+CSE with Artificial Intelligence and Data Science,B.Tech,Computer Science,Verify Campus,Artificial Intelligence;Machine Learning;Data Science;Analytics,Python;Statistics;Data Analysis,Mathematics;Statistics;Python;Machine Learning
+CSE with Artificial Intelligence and Machine Learning,B.Tech,Computer Science,Verify Campus,Artificial Intelligence;Machine Learning;Automation;Robotics,Python;Programming;Data Analysis,Mathematics;Machine Learning;Deep Learning;Algorithms
+CSE with Artificial Intelligence and Internet of Things,B.Tech,Computer Science,Verify Campus,IoT;Smart Devices;Automation;Embedded Systems,Python;Programming;Electronics,Computer Networks;Sensors;Embedded Systems;Programming
+CSE with Cyber Security,B.Tech,Computer Science,Verify Campus,Cyber Security;Information Security;Network Security,Programming;Networking;Problem Solving,Computer Networks;Operating Systems;Cryptography
+Electrical and Electronics Engineering,B.Tech,Electrical Engineering,Verify Campus,Electrical Systems;Electronics;Automation,Circuit Analysis;Problem Solving;Technical Skills,Electrical Circuits;Power Systems;Electronics
+Electrical Engineering,B.Tech,Electrical Engineering,Verify Campus,Power Systems;Electrical Machines;Energy,Electrical Design;Circuit Analysis;Problem Solving,Electrical Machines;Power Systems;Control Systems
+Electronics and Communication Engineering,B.Tech,Electronics Engineering,Verify Campus,Electronics;Communication;Embedded Systems,Electronics;Circuit Design;Programming,Digital Electronics;Electronic Devices;Communication Systems
+Mechanical Engineering,B.Tech,Mechanical Engineering,Verify Campus,Automobiles;Machines;Manufacturing;Design,CAD;Technical Design;Problem Solving,Thermodynamics;Engineering Mechanics;Manufacturing
+Computer Science and Engineering,M.Tech,Computer Science,Verify Campus,Advanced Computing;Research;Software,Programming;Research;Problem Solving,Advanced Algorithms;Computer Science;Research Methods
+Construction Technology and Management,M.Tech,Civil Engineering,Verify Campus,Construction;Project Management;Infrastructure,Planning;Project Management;Design,Construction Technology;Project Management;Structural Engineering
+Digital Communication,M.Tech,Electronics Engineering,Verify Campus,Communication;Signal Processing;Electronics,Signal Analysis;Electronics;Programming,Digital Communication;Signal Processing;Wireless Communication
+Machine Design,M.Tech,Mechanical Engineering,Verify Campus,Mechanical Design;Machines;Product Design,CAD;Design;Analysis,Machine Design;Mechanics;Engineering Materials
+Power System,M.Tech,Electrical Engineering,Verify Campus,Power Generation;Power Distribution;Energy,Electrical Analysis;Problem Solving;Technical Design,Power Systems;Electrical Machines;Power Electronics
+Structural Engineering,M.Tech,Civil Engineering,Verify Campus,Structures;Buildings;Construction,Structural Analysis;Design;Problem Solving,Structural Analysis;Concrete Structures;Steel Structures
+Thermal Power and Engineering,M.Tech,Mechanical Engineering,Verify Campus,Thermal Systems;Energy;Power Plants,Thermal Analysis;Problem Solving;Engineering Design,Thermodynamics;Heat Transfer;Fluid Mechanics
+Very Large Scale Integration Design,M.Tech,Electronics Engineering,Verify Campus,Semiconductors;Chip Design;Electronics,Digital Design;Electronics;Programming,Digital Electronics;VLSI Design;Microprocessors
+Bachelor of Pharmacy,B.Pharm,Pharmacy,Verify Campus,Healthcare;Medicines;Pharmaceutical Science,Scientific Analysis;Laboratory Skills;Research,Pharmaceutics;Pharmaceutical Chemistry;Pharmacology
+Pharmaceutics,M.Pharm,Pharmacy,Verify Campus,Drug Formulation;Pharmaceutical Research;Healthcare,Research;Laboratory Skills;Scientific Analysis,Pharmaceutics;Drug Delivery;Pharmaceutical Technology
+Pharmaceutical Chemistry,M.Pharm,Pharmacy,Verify Campus,Drug Research;Chemistry;Pharmaceutical Analysis,Chemistry;Research;Laboratory Skills,Pharmaceutical Chemistry;Medicinal Chemistry;Drug Analysis
+Bachelor of Business Administration,BBA,Management,Verify Campus,Business;Entrepreneurship;Marketing;Management,Communication;Leadership;Business Analysis,Accounting;Marketing;Business Management;Economics
+Master of Business Administration,MBA,Management,Verify Campus,Management;Finance;Marketing;Human Resources;Business Strategy,Leadership;Decision Making;Communication;Business Analysis,Finance;Marketing;Human Resource Management;Business Strategy
