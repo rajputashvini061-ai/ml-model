@@ -14,6 +14,12 @@ const state = {
   skills: new Set(),
 };
 
+const API_BASE = (window.API_BASE_URL || "").replace(/\/$/, "");
+const apiHeaders = (extra = {}) => ({
+  ...extra,
+  ...(window.API_KEY ? { "x-api-key": window.API_KEY } : {}),
+});
+
 const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmtSemi = (v) => String(v ?? "").split(";").map((s) => s.trim()).filter(Boolean).join(", ");
 
@@ -63,9 +69,9 @@ async function fetchRecommendations() {
   const interests = [...state.interests, ...(customInterests ? [customInterests] : [])].join(", ");
   const skills = [...state.skills, ...(customSkills ? [customSkills] : [])].join(", ");
 
-  const res = await fetch("/api/recommend", {
+  const res = await fetch(`${API_BASE}/api/recommend`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: apiHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify({ stream: state.stream, subjects: [...state.subjects], interests, skills, top_n: topN }),
   });
   const data = await res.json();
@@ -144,7 +150,7 @@ function renderCatalog(query = "") {
 }
 
 async function init() {
-  state.meta = await (await fetch("/api/meta")).json();
+  state.meta = await (await fetch(`${API_BASE}/api/meta`, { headers: apiHeaders() })).json();
   document.getElementById("officialNoteText").textContent = state.meta.official_note;
   document.getElementById("topNSlider").max = state.meta.courses.length;
 

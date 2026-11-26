@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+import os
 import tempfile
 import unittest
 from pathlib import Path
 
-from api import build_recommend_payload, get_meta_payload
+from api import build_recommend_payload, get_meta_payload, is_authorized
 from recommender import CourseRecommender, STREAM_SUBJECTS, VALID_STREAMS, load_courses
 from train_model import recommend_courses
 
@@ -66,6 +67,13 @@ class TestCourseRecommendationSystem(unittest.TestCase):
     def test_train_model_and_api_payloads(self) -> None:
         meta = get_meta_payload()
         self.assertEqual(len(meta["courses"]), 13)
+        self.assertTrue(is_authorized({}))
+        os.environ["API_KEY"] = "secret-test-key"
+        try:
+            self.assertFalse(is_authorized({}))
+            self.assertTrue(is_authorized({"x-api-key": "secret-test-key"}))
+        finally:
+            os.environ.pop("API_KEY", None)
         for stream in VALID_STREAMS:
             df = recommend_courses(stream, STREAM_SUBJECTS[stream], "Technology, Business, Healthcare", "Python, Communication")
             self.assertFalse(df.empty)

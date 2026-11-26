@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import hmac
 import os
 from pathlib import Path
 
 import uvicorn
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import FileResponse, JSONResponse
 from starlette.routing import Mount, Route
@@ -58,15 +61,32 @@ def build_recommend_payload(body: dict) -> dict:
     }
 
 
+def is_authorized(headers: dict[str, str] | object) -> bool:
+    """Verify optional x-api-key header when API_KEY environment variable is configured."""
+    expected = os.environ.get("API_KEY", "").strip()
+    if not expected:
+        return True
+    provided = str(headers.get("x-api-key", "")).strip()
+    return hmac.compare_digest(provided, expected)
+
+
 async def index(_: Request) -> FileResponse:
     return FileResponse(FRONTEND_DIR / "index.html")
 
 
-async def meta(_: Request) -> JSONResponse:
+async def health(_: Request) -> JSONResponse:
+    return JSONResponse({"status": "ok", "total_courses": len(_ENGINE.df)})
+
+
+async def meta(request: Request) -> JSONResponse:
+    if not is_authorized(request.headers):
+        return JSONResponse({"error": "Invalid or missing x-api-key header."}, status_code=401)
     return JSONResponse(get_meta_payload())
 
 
 async def recommend_endpoint(request: Request) -> JSONResponse:
+    if not is_authorized(request.headers):
+        return JSONResponse({"error": "Invalid or missing x-api-key header."}, status_code=401)
     try:
         body = await request.json()
         if not isinstance(body, dict):
@@ -76,13 +96,24 @@ async def recommend_endpoint(request: Request) -> JSONResponse:
         return JSONResponse({"error": str(exc)}, status_code=400)
 
 
+allowed_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+
 app = Starlette(
     routes=[
         Route("/", index),
+        Route("/api/health", health, methods=["GET"]),
         Route("/api/meta", meta, methods=["GET"]),
         Route("/api/recommend", recommend_endpoint, methods=["POST"]),
         Mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static"),
-    ]
+    ],
+    middleware=[
+        Middleware(
+            CORSMiddleware,
+            allow_origins=allowed_origins,
+            allow_methods=["GET", "POST", "OPTIONS"],
+            allow_headers=["*"],
+        )
+    ],
 )
 
 if __name__ == "__main__":
