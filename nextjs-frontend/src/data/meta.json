@@ -1,0 +1,260 @@
+{
+  "streams": [
+    "PCM",
+    "PCB",
+    "PCMB",
+    "Commerce",
+    "Arts"
+  ],
+  "stream_subjects": {
+    "PCM": [
+      "Physics",
+      "Chemistry",
+      "Mathematics"
+    ],
+    "PCB": [
+      "Physics",
+      "Chemistry",
+      "Biology"
+    ],
+    "PCMB": [
+      "Physics",
+      "Chemistry",
+      "Mathematics",
+      "Biology"
+    ],
+    "Commerce": [
+      "Accountancy",
+      "Business Studies",
+      "Economics"
+    ],
+    "Arts": [
+      "History",
+      "Political Science",
+      "Sociology",
+      "Economics"
+    ]
+  },
+  "all_subjects": [
+    "Physics",
+    "Chemistry",
+    "Mathematics",
+    "Biology",
+    "Accountancy",
+    "Business Studies",
+    "Economics",
+    "History",
+    "Political Science",
+    "Sociology",
+    "Computer Science",
+    "Information Practices",
+    "Biotechnology",
+    "Psychology",
+    "English"
+  ],
+  "interests": [
+    "Applications",
+    "Artificial Intelligence",
+    "Automation",
+    "Automobiles",
+    "Bridges",
+    "Buildings",
+    "Business",
+    "Chemistry",
+    "Communication",
+    "Construction",
+    "Cyber Security",
+    "Data Analytics",
+    "Data Science",
+    "Database Systems",
+    "Deep Learning",
+    "Digital Safety",
+    "Electrical Machines",
+    "Electrical Systems",
+    "Electronics",
+    "Embedded Systems",
+    "Energy",
+    "Entrepreneurship",
+    "Finance",
+    "Healthcare",
+    "Information Security",
+    "Information Technology",
+    "Infrastructure",
+    "IoT",
+    "Machine Learning",
+    "Machines",
+    "Management",
+    "Manufacturing",
+    "Marketing",
+    "Medicines",
+    "Network Security",
+    "Networking",
+    "Pharmaceutical Science",
+    "Power Generation",
+    "Power Systems",
+    "Power Technology",
+    "Product Design",
+    "Programming",
+    "Robotics",
+    "Signal Processing",
+    "Smart Devices",
+    "Software",
+    "Software Development",
+    "Statistics",
+    "Structural Design",
+    "Technology"
+  ],
+  "skills": [
+    "Algorithmic Thinking",
+    "Attention to Detail",
+    "Business Analysis",
+    "C Programming",
+    "CAD",
+    "Circuit Analysis",
+    "Circuit Design",
+    "Communication",
+    "Data Analysis",
+    "Database Management",
+    "Decision Making",
+    "Design",
+    "Electrical Design",
+    "Electronics",
+    "Laboratory Skills",
+    "Leadership",
+    "Logical Thinking",
+    "Mathematics",
+    "Mechanical Analysis",
+    "Networking",
+    "Planning",
+    "Problem Solving",
+    "Programming",
+    "Python",
+    "Research",
+    "Scientific Analysis",
+    "Spatial Thinking",
+    "Statistics",
+    "Technical Design",
+    "Technical Skills",
+    "Troubleshooting"
+  ],
+  "official_note": "App filtering uses simplified stream/subject columns in courses.csv. Official admission eligibility (marks, relaxations, branch rules, Math/Bio/Biotech options) follows current SISTec, DTE MP, RGPV, and PCI norms.",
+  "courses": [
+    {
+      "programme": "Civil Engineering",
+      "level": "B.Tech",
+      "department": "Engineering",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Computer Science and Engineering",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Computer Science and Information Technology",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "CSE with Artificial Intelligence and Data Science",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "CSE with Artificial Intelligence and Machine Learning",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "CSE with Artificial Intelligence and Internet of Things",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "CSE with Cyber Security",
+      "level": "B.Tech",
+      "department": "Computer Science",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Electrical and Electronics Engineering",
+      "level": "B.Tech",
+      "department": "Electrical Engineering",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Electrical Engineering",
+      "level": "B.Tech",
+      "department": "Electrical Engineering",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Electronics and Communication Engineering",
+      "level": "B.Tech",
+      "department": "Electronics Engineering",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Mechanical Engineering",
+      "level": "B.Tech",
+      "department": "Mechanical Engineering",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCMB",
+      "required_subjects": "Physics;Chemistry;Mathematics",
+      "eligibility_criteria": "10+2 from recognized board with Physics and Chemistry and Mathematics/Biology/Biotechnology; branch-specific admission rules must be verified through current DTE/RGPV guidelines."
+    },
+    {
+      "programme": "Bachelor of Pharmacy",
+      "level": "B.Pharm",
+      "department": "Pharmacy",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCB;PCMB",
+      "required_subjects": "Physics;Chemistry;Biology",
+      "eligibility_criteria": "10+2 with Physics and Chemistry along with Mathematics or Biology; final eligibility as per current DTE and PCI norms."
+    },
+    {
+      "programme": "Bachelor of Business Administration",
+      "level": "BBA",
+      "department": "Management",
+      "campus": "Verify Campus",
+      "eligible_streams": "PCM;PCB;PCMB;Commerce;Arts",
+      "required_subjects": "10+2 pass",
+      "eligibility_criteria": "Passed Class 12 from any stream and recognized board."
+    }
+  ]
+}
