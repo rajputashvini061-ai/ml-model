@@ -62,16 +62,42 @@ def build_recommend_payload(body: dict) -> dict:
 
 
 def is_authorized(headers: dict[str, str] | object) -> bool:
-    """Verify optional x-api-key header when API_KEY environment variable is configured."""
+    """Verify optional x-api-key or Authorization: Bearer token when API_KEY is set."""
     expected = os.environ.get("API_KEY", "").strip()
     if not expected:
         return True
-    provided = str(headers.get("x-api-key", "")).strip()
-    return hmac.compare_digest(provided, expected)
+    lowered = {str(k).lower(): str(v).strip() for k, v in dict(headers).items()}
+    api_key = lowered.get("x-api-key", "")
+    auth = lowered.get("authorization", "")
+    bearer = auth[7:].strip() if auth.lower().startswith("bearer ") else ""
+    return hmac.compare_digest(api_key or bearer, expected)
 
 
 async def index(_: Request) -> FileResponse:
     return FileResponse(FRONTEND_DIR / "index.html")
+
+
+async def api_root(_: Request) -> JSONResponse:
+    return JSONResponse(
+        {
+            "service": "SISTec Course Recommendation ML API",
+            "status": "ok",
+            "auth": "Optional API_KEY via 'Authorization: Bearer <API_KEY>' or 'x-api-key: <API_KEY>'",
+            "endpoints": {
+                "GET /api/health": "Service health check",
+                "GET /api/meta": "Streams, subjects, interests, skills, and 13 SISTec courses",
+                "POST /api": "Recommend SISTec courses (same as POST /api/recommend)",
+                "POST /api/recommend": "Recommend SISTec courses from JSON student profile",
+            },
+            "sample_request": {
+                "stream": "PCM",
+                "subjects": ["Physics", "Chemistry", "Mathematics"],
+                "interests": "Artificial Intelligence, Data Science",
+                "skills": "Python, Statistics",
+                "top_n": 5,
+            },
+        }
+    )
 
 
 async def health(_: Request) -> JSONResponse:
@@ -80,13 +106,13 @@ async def health(_: Request) -> JSONResponse:
 
 async def meta(request: Request) -> JSONResponse:
     if not is_authorized(request.headers):
-        return JSONResponse({"error": "Invalid or missing x-api-key header."}, status_code=401)
+        return JSONResponse({"error": "Invalid or missing API key."}, status_code=401)
     return JSONResponse(get_meta_payload())
 
 
 async def recommend_endpoint(request: Request) -> JSONResponse:
     if not is_authorized(request.headers):
-        return JSONResponse({"error": "Invalid or missing x-api-key header."}, status_code=401)
+        return JSONResponse({"error": "Invalid or missing API key."}, status_code=401)
     try:
         body = await request.json()
         if not isinstance(body, dict):
@@ -101,6 +127,8 @@ allowed_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").spl
 app = Starlette(
     routes=[
         Route("/", index),
+        Route("/api", api_root, methods=["GET"]),
+        Route("/api", recommend_endpoint, methods=["POST"]),
         Route("/api/health", health, methods=["GET"]),
         Route("/api/meta", meta, methods=["GET"]),
         Route("/api/recommend", recommend_endpoint, methods=["POST"]),

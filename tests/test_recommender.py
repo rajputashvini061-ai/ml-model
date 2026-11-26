@@ -72,6 +72,7 @@ class TestCourseRecommendationSystem(unittest.TestCase):
         try:
             self.assertFalse(is_authorized({}))
             self.assertTrue(is_authorized({"x-api-key": "secret-test-key"}))
+            self.assertTrue(is_authorized({"Authorization": "Bearer secret-test-key"}))
         finally:
             os.environ.pop("API_KEY", None)
         for stream in VALID_STREAMS:
