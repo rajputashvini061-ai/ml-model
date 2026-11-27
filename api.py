@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hmac
 import os
+from pathlib import Path
 
 import uvicorn
 from starlette.applications import Starlette
@@ -11,7 +12,8 @@ from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import JSONResponse
-from starlette.routing import Route
+from starlette.routing import Mount, Route
+from starlette.staticfiles import StaticFiles
 
 from recommender import (
     ALL_SUBJECTS,
@@ -23,6 +25,7 @@ from recommender import (
     split_items,
 )
 
+STATIC_UI_DIR = Path(__file__).resolve().parent / "static_ui"
 _ENGINE = CourseRecommender(load_courses())
 
 
@@ -117,15 +120,20 @@ async def recommend_endpoint(request: Request) -> JSONResponse:
 
 allowed_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 
+routes = [
+    Route("/api", api_root, methods=["GET"]),
+    Route("/api", recommend_endpoint, methods=["POST"]),
+    Route("/api/health", health, methods=["GET"]),
+    Route("/api/meta", meta, methods=["GET"]),
+    Route("/api/recommend", recommend_endpoint, methods=["POST"]),
+]
+if STATIC_UI_DIR.is_dir():
+    routes.append(Mount("/", app=StaticFiles(directory=STATIC_UI_DIR, html=True), name="ui"))
+else:
+    routes.append(Route("/", api_root, methods=["GET"]))
+
 app = Starlette(
-    routes=[
-        Route("/", api_root, methods=["GET"]),
-        Route("/api", api_root, methods=["GET"]),
-        Route("/api", recommend_endpoint, methods=["POST"]),
-        Route("/api/health", health, methods=["GET"]),
-        Route("/api/meta", meta, methods=["GET"]),
-        Route("/api/recommend", recommend_endpoint, methods=["POST"]),
-    ],
+    routes=routes,
     middleware=[
         Middleware(
             CORSMiddleware,
