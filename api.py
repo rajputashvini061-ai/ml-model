@@ -1,19 +1,17 @@
-"""Lightweight Starlette API linking the HTML/CSS/JS frontend to recommender.py."""
+"""Pure Starlette ML API backend for the SISTec Course Recommendation System."""
 
 from __future__ import annotations
 
 import hmac
 import os
-from pathlib import Path
 
 import uvicorn
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
-from starlette.responses import FileResponse, JSONResponse
-from starlette.routing import Mount, Route
-from starlette.staticfiles import StaticFiles
+from starlette.responses import JSONResponse
+from starlette.routing import Route
 
 from recommender import (
     ALL_SUBJECTS,
@@ -25,7 +23,6 @@ from recommender import (
     split_items,
 )
 
-FRONTEND_DIR = Path(__file__).resolve().parent / "frontend"
 _ENGINE = CourseRecommender(load_courses())
 
 
@@ -71,10 +68,6 @@ def is_authorized(headers: dict[str, str] | object) -> bool:
     auth = lowered.get("authorization", "")
     bearer = auth[7:].strip() if auth.lower().startswith("bearer ") else ""
     return hmac.compare_digest(api_key or bearer, expected)
-
-
-async def index(_: Request) -> FileResponse:
-    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 async def api_root(_: Request) -> JSONResponse:
@@ -126,13 +119,12 @@ allowed_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").spl
 
 app = Starlette(
     routes=[
-        Route("/", index),
+        Route("/", api_root, methods=["GET"]),
         Route("/api", api_root, methods=["GET"]),
         Route("/api", recommend_endpoint, methods=["POST"]),
         Route("/api/health", health, methods=["GET"]),
         Route("/api/meta", meta, methods=["GET"]),
         Route("/api/recommend", recommend_endpoint, methods=["POST"]),
-        Mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static"),
     ],
     middleware=[
         Middleware(

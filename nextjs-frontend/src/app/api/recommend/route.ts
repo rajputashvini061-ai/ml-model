@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const headers: Record<string, string> = { "Content-Type": "application/json" };
     if (RENDER_API_KEY) {
-      headers["x-api-key"] = RENDER_API_KEY;
+      headers["Authorization"] = `Bearer ${RENDER_API_KEY}`;
     }
 
     const res = await fetch(`${RENDER_API_URL}/api/recommend`, {
